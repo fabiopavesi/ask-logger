@@ -1,3 +1,6 @@
+/**
+ * Built-in log levels
+ */
 export declare enum LogLevel {
     LOG = 0,
     DEBUG = 1,
@@ -14,7 +17,18 @@ export declare class Logger {
     private static instances;
     private static level;
     private constructor();
+    /**
+     * Get a logger instance for the specified context
+     *
+     * The context is a string that will be added to all messages coming from, e.g., a specific class or module
+     *
+     * @param context
+     */
     static getLogger(context: string): Logger;
+    /**
+     * Sets the global debugging level, i.e. the minimum level for messages to be shown
+     * @param level
+     */
     set_level(level: LogLevel): void;
     private do_log;
     log(...messages: any): void;

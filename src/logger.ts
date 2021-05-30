@@ -1,3 +1,6 @@
+/**
+ * Built-in log levels
+ */
 export enum LogLevel {
     LOG,
     DEBUG,
@@ -6,6 +9,7 @@ export enum LogLevel {
     ERROR,
     NONE
 }
+
 export class Logger {
     private static level_names = [
         'LOG',
@@ -36,11 +40,22 @@ export class Logger {
     private constructor(private context: string) {
     }
 
+    /**
+     * Get a logger instance for the specified context
+     *
+     * The context is a string that will be added to all messages coming from, e.g., a specific class or module
+     *
+     * @param context
+     */
     static getLogger(context: string) {
         if (!this.instances[context]) this.instances[context] = new Logger(context)
         return this.instances[context]
     }
 
+    /**
+     * Sets the global debugging level, i.e. the minimum level for messages to be shown
+     * @param level
+     */
     set_level(level: LogLevel) {
         Logger.level = level
     }
@@ -58,19 +73,19 @@ export class Logger {
         }
     }
 
-    log(...messages: any) {
+    public log(...messages: any) {
         this.do_log(LogLevel.LOG, messages)
     }
-    debug(...messages: any) {
+    public debug(...messages: any) {
         this.do_log(LogLevel.DEBUG, messages)
     }
-    info(...messages: any) {
+    public info(...messages: any) {
         this.do_log(LogLevel.INFO, messages)
     }
-    warn(...messages: any) {
+    public warn(...messages: any) {
         this.do_log(LogLevel.WARN, messages)
     }
-    error(...messages: any) {
+    public error(...messages: any) {
         this.do_log(LogLevel.ERROR, messages)
     }
 }
