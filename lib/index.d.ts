@@ -37,4 +37,4 @@ export declare class Logger {
     warn(...messages: any): void;
     error(...messages: any): void;
 }
-//# sourceMappingURL=logger.d.ts.map
+//# sourceMappingURL=index.d.ts.map
